@@ -1,0 +1,41 @@
+<h3 class="first">Add a new book</h3>
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-4">
+        <!-- <div class="ui-inputgroup">
+            <input type="number" pInputText placeholder="id" [(ngModel)]="book.id">         
+        </div> -->
+    </div>
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="title" [(ngModel)]="book.title">         
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="author" [(ngModel)]="book.author">         
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <input type="number" pInputText placeholder="release" [(ngModel)]="book.release">         
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="publishingHouse" [(ngModel)]="book.publishingHouse">         
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="category" [(ngModel)]="book.category">         
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="description" [(ngModel)]="book.description">         
+        </div>
+    </div>
+
+    <div>
+        <button pButton (click)="save()" label="SAVE"></button>
+    </div>

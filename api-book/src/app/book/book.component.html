@@ -1,0 +1,42 @@
+<input type="number" pInputText placeholder="id" [(ngModel)]="book.id">
+<button pButton type="button" (click)="search(book.id)" label="SEARCH"></button>
+<script>
+
+</script>
+Resultado da Busca:
+<p id=result></p>
+
+<h3 class="first">Booklist</h3>
+<p-table [value]="books">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Release</th>
+            <th>Publishing House</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+        <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.release}}</td>
+            <td>{{book.publishingHouse}}</td>
+            <td>{{book.category}}</td>
+            <td>{{book.description}}</td>
+            <td> 
+                <button pButton class="ui-button-danger" type="button" label="DELETE" (click)="delete(book.id)"></button> 
+                <button pButton class="ui-button-warning" type="button" label="UPDATE" [routerLink]="['update',book.id]" ></button> 
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+ 
+<button pButton type="button" label="Insert a new book" routerLink="add"></button>
+<p-confirmDialog header="Warning!" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
