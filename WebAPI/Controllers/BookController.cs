@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Net.Http;
-using System.Text;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using WebAPI.Models;
@@ -38,7 +37,6 @@ namespace WebAPI.Controllers {
                 NpgsqlCommand cmd = new NpgsqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = "INSERT INTO BOOK (TITLE,AUTHOR,RELEASE,PUBLISHING,CATEGORY,DESCRIPTION) VALUES(@title,@author,@release,@publishing,@category,@description); ";
-                //cmd.Parameters.AddWithValue("@id", book.Id);
                 cmd.Parameters.AddWithValue("@title", book.Title);
                 cmd.Parameters.AddWithValue("@author", book.Author);
                 cmd.Parameters.AddWithValue("@release", book.Release);
@@ -188,192 +186,7 @@ namespace WebAPI.Controllers {
             }
         }
 
-        //métodos CRUD - atualizar campo: título da obra
-        [HttpPut]
-        [Route("UpdateTitle/{id}/{title}")]
-        public void UpdateTitle(int id, string title)
-        {
-            //abrindo o canal com o banco
-            NpgsqlConnection conn = new NpgsqlConnection("Server=127.0.0.1;Port=5434;User Id=postgres;Password=admin;Database=challange;");
-
-            //buscando o dado a partir da ID 
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "UPDATE BOOK SET TITLE='" + title + "' WHERE ID='" + id + "';";
-            cmd.CommandType = CommandType.Text;
-
-            conn.Open();
-            try
-            {
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                    Console.WriteLine("Cadastro atualizado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erro: " + ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        //métodos CRUD - atualizar campo: autor
-        [HttpPut]
-        [Route("UpdateAuthor/{id}/{author}")]
-        public void UpdateAuthor(int id, string author)
-        {
-            //abrindo o canal com o banco
-            NpgsqlConnection conn = new NpgsqlConnection("Server=127.0.0.1;Port=5434;User Id=postgres;Password=admin;Database=challange;");
-
-            //buscando o dado a partir da ID 
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "UPDATE BOOK SET AUTHOR='" + author + "' WHERE ID='" + id + "';";
-            cmd.CommandType = CommandType.Text;
-
-            conn.Open();
-            try
-            {
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                    Console.WriteLine("Cadastro atualizado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erro: " + ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        //métodos CRUD - atualizar campo: ano de lançamento
-        [HttpPut]
-        [Route("UpdateRelease/{id}/{release}")]
-        public void UpdateRelease(int id, int release)
-        {
-            //abrindo o canal com o banco
-            NpgsqlConnection conn = new NpgsqlConnection("Server=127.0.0.1;Port=5434;User Id=postgres;Password=admin;Database=challange;");
-
-            //buscando o dado a partir da ID 
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "UPDATE BOOK SET RELEASE='" + release + "' WHERE ID='" + id + "';";
-            cmd.CommandType = CommandType.Text;
-
-            conn.Open();
-            try
-            {
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                    Console.WriteLine("Cadastro atualizado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erro: " + ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        //métodos CRUD - atualizar campo: editora
-        [HttpPut]
-        [Route("UpdatePublishing/{id}/{publishingHouse}")]
-        public void UpdatePublishing(int id, string publishingHouse)
-        {
-            //abrindo o canal com o banco
-            NpgsqlConnection conn = new NpgsqlConnection("Server=127.0.0.1;Port=5434;User Id=postgres;Password=admin;Database=challange;");
-
-            //buscando o dado a partir da ID 
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "UPDATE BOOK SET PUBLISHING='" + publishingHouse + "' WHERE ID='" + id + "';";
-            cmd.CommandType = CommandType.Text;
-
-            conn.Open();
-            try
-            {
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                    Console.WriteLine("Cadastro atualizado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erro: " + ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        //métodos CRUD - atualizar campo: categoria
-        [HttpPut]
-        [Route("UpdateCategory/{id}/{publishingHouse}")]
-        public void UpdateCategory(int id, string category)
-        {
-            //abrindo o canal com o banco
-            NpgsqlConnection conn = new NpgsqlConnection("Server=127.0.0.1;Port=5434;User Id=postgres;Password=admin;Database=challange;");
-
-            //buscando o dado a partir da ID 
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "UPDATE BOOK SET CATEGORY='" + category + "' WHERE ID='" + id + "';";
-            cmd.CommandType = CommandType.Text;
-
-            conn.Open();
-            try
-            {
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                    Console.WriteLine("Cadastro atualizado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erro: " + ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        //métodos CRUD - atualizar campo: descrição
-        [HttpPut]
-        [Route("UpdateDescription/{id}/{description}")]
-        public void UpdateDescription(int id, string description)
-        {
-            //abrindo o canal com o banco
-            NpgsqlConnection conn = new NpgsqlConnection("Server=127.0.0.1;Port=5434;User Id=postgres;Password=admin;Database=challange;");
-
-            //buscando o dado a partir da ID 
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "UPDATE BOOK SET DESCRIPTION='" + description + "' WHERE ID='" + id + "';";
-            cmd.CommandType = CommandType.Text;
-
-            conn.Open();
-            try
-            {
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
-                    Console.WriteLine("Cadastro atualizado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erro: " + ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
+       
         //deletar um registro
         [HttpDelete]
         [Route("Delete/{id}")]
